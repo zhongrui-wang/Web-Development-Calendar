@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+		<head>
+			<title>CALENDAR</title>
+      <link rel="stylesheet" type="text/css" href="calendar.css">
+      <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+			<script src="http://classes.engineering.wustl.edu/cse330/content/calendar.min.js" type="text/javascript"></script>
+			<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+			<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/start/jquery-ui.css" type="text/css" rel="Stylesheet" />
+			<!-- We need the style sheet linked above or the dialogs/other parts of jquery-ui won't display correctly!-->			
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+			<!-- The main library. Note: must be listed before the jquery-ui library -->			
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+			<!-- jquery-UI hosted on Google's Ajax CDN-->
+			<!-- Note: you can download the javascript file from the link provided on the google doc, or simply provide its URL in the src attribute (microsoft and google also host the jQuery library-->
+      <script type="text/javascript">
+        function showdialog(){
+          $("#mydialog").dialog();
+        }
+      </script>
+      <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        text-align: left;    
+      }
+      </style>
+    </head>
+    <body>
+      <div id="title">My Calendar</div>
+      <div class = "login" id="login">
+        <p>Log in:<input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button id="login_btn">Log In</button></p>
+      </div>
+      <div class="register" id="register">
+        <p> Register:<input type="text" id="r_username" placeholder="Username" />
+        <input type="password" id="r1_password" placeholder="Password" />
+        <input type="password" id="r2_password" placeholder="Reenter Password" />
+        <button id="register_btn">Register</button></p>
+      </div>
+      <div id="month_controller">
+        <p><button id="previous">Previous Period</button>
+        <button id="next">Next Period</button></p>
+      </div>
+      <table id = "calendar">
+        <thead>
+          <tr>
+            <th colspan="7" id="current_month">Current Month:</th>
+          </tr>
+          <tr>
+            <td>Sun</td>
+            <td>Mon</td>
+            <td>Tue</td>
+            <td>Wed</td>
+            <td>Thu</td>
+            <td>Fri</td>
+            <td>Sat</td>
+          </tr>
+        </thead>
+        <tbody id="calendar_body"></tbody>
+    </table>
+    <div class = "function" id="function">
+        <button id="logout_btn">Log Out</button>
+        <button id="addevent_btn" onclick=showdialog()>Add Event</button>
+        <button id="groupevent_btn">Add Group Event</button>
+        <input type="checkbox" name="show_urgent" value="show_urgent" id="show_urgent">Show Urgent Events
+    </div>
+    <div class="share" id="share">
+        <p> Share Calender to:<input type="text" id="share_to" placeholder="Username" />
+        <button id="share_btn">Share</button>
+        <input type="checkbox" name="show_shared" value="show_shared" id="show_shared">Show Shared Calendars</p>
+      </div>
+    <div class="mydialog" id="mydialog" title = "Add Event">
+        <p>Event:<input type="text" name="event" id="event_title"></p>
+        <p>Date:<input type="date" name="date" id="date"></p>
+        <p>Time:<input type="time" name="time" id="time"></p>
+        <p><input type="checkbox" name="set_urgent" value="set_urgent" id="set_urgent">Urgent Events</p>
+        <input type="submit" name="Save" value="Add Event" id="add_btn">
+        <input type="hidden" id="single_event_id">
+        <input type="hidden" id="csrf_token">
+    </div>
+    <div class="group_dialog" id="group_dialog" title = "Add Group Event">
+      <p>Event:<input type="text" name="event" class="group_eventtitle" id="group_eventtitle"></p>
+      <p>Date:<input type="date" name="date" class="date" id="group_date"></p>
+      <p>Time:<input type="time" name="time" class="time" id="group_time"></p>
+      <p>Group With:<input type="text" name="teammate" class="teammate" id="teammate"></p>
+      <p><input type="checkbox" name="set_urgent" value="set_groupurgent" id="set_groupurgent">Urgent Events</p>
+      <input type="submit" name="Save" value="Add Group Event" id="addgroup_btn">
+      <input type="hidden" id="single_event_id">
+      <input type="hidden" id="csrf_token">
+    </div>
+    <div class="event_dialog" id="event_dialog" title = "Edit Event">
+        <p>Event:<input type="text" name="event" class="new_eventtitle" id="new_eventtitle"></p>
+        <p>Date:<input type="date" name="date" class="new_date" id="new_date"></p>
+        <p>Time:<input type="time" name="time" class="new_time" id="new_time"></p>
+        <p><input type="checkbox" name="set_newurgent" value="set_newurgent" id="set_newurgent">Urgent Events</p>
+        <input type="submit" value="Edit" id="firstedit_btn">
+        <input type="hidden" id="single_event_id">
+        <input type="hidden" id="csrf_token">
+    </div>
+    <!-- load the JavaScript file -->
+    <script type="text/javascript" src="ajax.js"></script> 
+    <script type="text/javascript" src="calendar.js"></script>
+    <script type="text/javascript" src="event.js"></script>
+    </body>
+  </html>

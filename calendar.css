@@ -1,0 +1,50 @@
+body{
+    width: 1400px; /* how wide to make your web page */
+    background-color: lightblue; 
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 10;
+    font: 15px arial, sans-serif;
+}
+div#title{
+    position: relative;
+    font-size: 25px;
+    top: 10px;
+    text-align: center;
+}
+
+table{
+    background: #fff;
+    border-collapse: collapse;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 100%;
+    overflow: hidden;
+    table-layout: auto;
+    border: 1px solid black;
+}
+thead{
+    border: 1px solid #ccc;
+    color: #222;
+    vertical-align: top;
+}
+th{
+    font-size: 20px;
+}
+tbody{
+    color: #222;
+    text-align: center;
+    font-weight: 700;
+    line-height: 80px;
+    text-align: center;
+    vertical-align: center;
+  
+}  
+
+.editable {
+    height: 85px; /* how high to make table cell */
+    width: 90px; /* how wide to make table cell */
+    text-align: left;
+    position: relative;
+  }
